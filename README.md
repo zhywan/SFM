@@ -1,5 +1,5 @@
 # SFM
-Strategic Flipping Method for 2016 iDASH Challenge Track 1
+## Strategic Flipping Method for 2016 iDASH Challenge Track 1
 
 I assume that the attacker can query SNPs in any order.
 
