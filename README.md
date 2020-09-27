@@ -21,27 +21,27 @@ These strategies should be applied in order.
 
    All the SNPs are sorted according to a certain metric: 
 
-   i) minor allele frequency, 
+      i) minor allele frequency, 
 
-   ii) absolute difference between the pool and the underlying reference, 
+      ii) absolute difference between the pool and the underlying reference, 
 
-   iii) difference between the pool and the underlying reference, 
+      iii) difference between the pool and the underlying reference, 
 
-   iv) log-likelihood ratio corresponding to each SNP, or
+      iv) log-likelihood ratio corresponding to each SNP, or
 
-   v) default order.
+      v) default order.
 
 2) Mitigation Strategy:
 
-   The result from the server will be flip from "true" to "false" for a certain SNP if 
+   The result from the server will be flip from "true" to "false" for a certain SNP if:
 
-   i) it is within top K SNPs,
+      i) it is within top K SNPs,
 
-   ii) its sorting metric is within a threshold, 
+      ii) its sorting metric is within a threshold, 
 
-   iii) it is within top k% SNPs, or 
+      iii) it is within top k% SNPs, or 
 
-   iv) same as iii but the value of "k" is determined automatically. For example, if the power without any mitigation strategy is 0, then k will be 0. If the power without any mitigation strategy is 1, then k will be kappa. If the power without any mitigation strategy is rho, then k should be kappa*rho. Note that to use this strategy, the whole process should be run beforehand once with a setting where K=0. The limitation for this choice is that it requires a provided case dataset.
+      iv) same as iii but the value of "k" is determined automatically. For example, if the power without any mitigation strategy is 0, then k will be 0. If the power without any mitigation strategy is 1, then k will be kappa. If the power without any mitigation strategy is rho, then k should be kappa*rho. Note that to use this strategy, the whole process should be run beforehand once with a setting where K=0. The limitation for this choice is that it requires a provided case dataset.
 
 3) Noise-adding strategy:
 
@@ -55,35 +55,35 @@ The commmands need to be executed including:
 
   * Precomputation stage
 
-   "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/vcfSize500/chr10_selectedInd.vcf -n 500"
+   - "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/vcfSize500/chr10_selectedInd.vcf -n 500"
 
-   "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/500notInBeacon/chr10_selectedInd.vcf -n 500"
+   - "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/500notInBeacon/chr10_selectedInd.vcf -n 500"
 
   * Iteration stage
 
-   "python build_beacon_delta_rare_mitigate.py -t 1 -d 1e-06"
+   - "python build_beacon_delta_rare_mitigate.py -t 1 -d 1e-06"
 
-   "python Query_fromBeacon_delta_wholeRecords.py -t 1 -d 1e-06"
+   - "python Query_fromBeacon_delta_wholeRecords.py -t 1 -d 1e-06"
 
-   "python power_lrt.py"
+   - "python power_lrt.py"
 
 All the input/output file names are almost the same with the provided sample codes. To run the code, please first add the corresponding input files to the right locations:
 
-   "data/diybu/challengeData16/c1beacon/wholeRecords/vcfSize500/chr10_selectedInd.vcf"
+   - "data/diybu/challengeData16/c1beacon/wholeRecords/vcfSize500/chr10_selectedInd.vcf"
 
-   "data/diybu/challengeData16/c1beacon/wholeRecords/500notInBeacon/chr10_selectedInd.vcf"
+   - "data/diybu/challengeData16/c1beacon/wholeRecords/500notInBeacon/chr10_selectedInd.vcf"
 
 The following files are intermediate and final output files:
 
-   "vcfSize500wholeRecords.pkl"
+   - "vcfSize500wholeRecords.pkl"
 
-   "500notInBeaconwholeRecords.pkl"
+   - "500notInBeaconwholeRecords.pkl"
 
-   "chr10returnValue_500wholeR.txt"
+   - "chr10returnValue_500wholeR.txt"
 
-   "chr10_lrtScoreByStep.txt"
+   - "chr10_lrtScoreByStep.txt"
 
-   "power_delta.pdf"
+   - "power_delta.pdf"
 
 From the resulting power_delta.pdf, we can see the privacy risk has been mitigated substantially. Even for a very rare case where the log-likelihood scores are very similiar for the case and test, only 5% SNPs need to be filpped to mitigate the power dramatically.
 
