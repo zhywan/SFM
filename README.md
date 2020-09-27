@@ -1,5 +1,11 @@
 # SFM
-## Strategic Flipping Method for 2016 iDASH Challenge Track 1
+## Strategic Flipping Method for the 2016 iDASH Challenge Track 1
+
+Link to the website of the 2016 iDASH Challenge: http://www.humangenomeprivacy.org/2016/.
+
+The original competition task with intermediate data files could be downloaded here: https://www.dropbox.com/s/9y74p03lapfhqgh/challenge1.zip.
+
+### Solution:
 
 I assume that the attacker can query SNPs in any order.
 
