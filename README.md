@@ -53,13 +53,13 @@ These strategies should be applied in order.
 
 The commmands need to be executed including:
 
-  * Precomputation stage
+1. Precomputation stage
 
    - "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/vcfSize500/chr10_selectedInd.vcf -n 500"
 
    - "python vcf_bit.py -f data/diybu/challengeData16/c1beacon/wholeRecords/500notInBeacon/chr10_selectedInd.vcf -n 500"
 
-  * Iteration stage
+2. Iteration stage
 
    - "python build_beacon_delta_rare_mitigate.py -t 1 -d 1e-06"
 
